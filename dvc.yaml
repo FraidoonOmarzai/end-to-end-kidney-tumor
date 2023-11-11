@@ -7,3 +7,17 @@ stages:
     outs:
       - artifacts/data_ingestion/kidney-ct-scan-image
       - artifacts/data_ingestion/data.zip
+
+  base_model:
+    cmd: python3 src/kidney/pipeline/stage_02_base_model.py
+    deps:
+      - src/kidney/pipeline/stage_02_base_model.py
+      - config/config.yaml
+    params:
+      - IMAGE_SIZE
+      - INCLUDE_TOP
+      - CLASSES
+      - WEIGHTS
+      - LEARNING_RATE
+    outs:
+      - artifacts/base_model

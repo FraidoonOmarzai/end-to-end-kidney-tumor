@@ -5,8 +5,8 @@ stages:
     deps:
     - path: config/config.yaml
       hash: md5
-      md5: 5c85018016213bce3f87eeca97f416a7
-      size: 268
+      md5: 74b7ac8babd327eb0f62d1ea1d269d78
+      size: 438
     - path: src/kidney/pipeline/stage_01_data_ingestion.py
       hash: md5
       md5: 52c677759b88d8629b568a8dc4146fbb
@@ -21,3 +21,30 @@ stages:
       md5: 33ed59dbe5dec8ce2bb8e489b55203e4.dir
       size: 58936381
       nfiles: 465
+  base_model:
+    cmd: python3 src/kidney/pipeline/stage_02_base_model.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 74b7ac8babd327eb0f62d1ea1d269d78
+      size: 438
+    - path: src/kidney/pipeline/stage_02_base_model.py
+      hash: md5
+      md5: 211bb809f0e0288573804b183e244bc0
+      size: 835
+    params:
+      params.yaml:
+        CLASSES: 2
+        IMAGE_SIZE:
+        - 224
+        - 224
+        - 3
+        INCLUDE_TOP: false
+        LEARNING_RATE: 0.01
+        WEIGHTS: imagenet
+    outs:
+    - path: artifacts/base_model
+      hash: md5
+      md5: eb858c309ed70f464871a35d04f70b1f.dir
+      size: 118054560
+      nfiles: 2
