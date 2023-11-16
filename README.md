@@ -34,6 +34,10 @@ pip install -r requirements.txt
 * define config/config.yaml and constant.yaml --> add 01_data_ingestion.ipynb
 * entity --> configuration manager --> componenets --> pipeline --> run `dvc repro`
 
-4. **Base Model Section** 
+5. **Base Model Section** 
 * define config/config.yaml and params.yaml --> add 02_base_model.ipynb
+* entity --> configuration manager --> componenets --> pipeline --> run `dvc repro`
+
+5. **Model Training Section** 
+* define config/config.yaml and params.yaml --> add 02_base_model.ipynb **(prepare call backs and train the model)**
 * entity --> configuration manager --> componenets --> pipeline --> run `dvc repro`

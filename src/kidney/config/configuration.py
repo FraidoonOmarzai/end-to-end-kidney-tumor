@@ -1,7 +1,10 @@
 from kidney.utils.common import read_yaml, create_directories
 from kidney.constants import *
+import os
 from kidney.entity.entity import (DataIngestionConfig,
-                                  BaseModelConfig)
+                                  BaseModelConfig,
+                                  CallBackConfig,
+                                  ModelTrainingConfig)
 
 
 class ConfigurationManager:
@@ -43,3 +46,35 @@ class ConfigurationManager:
         )
 
         return base_model_config
+
+    def get_call_back_config(self) -> CallBackConfig:
+        config = self.config.call_backs
+        create_directories([config.root_dir])
+
+        call_back_config = CallBackConfig(
+            root_dir=config.root_dir,
+            tensorboard_root_log_dir=config.tensorboard_root_log_dir,
+            checkpoint_model_filepath=config.checkpoint_model_filepath
+        )
+        return call_back_config
+
+    def get_model_training_config(self) -> ModelTrainingConfig:
+        config = self.config.model_training
+        params = self.params
+        base_model = self.config.base_model
+        training_data = os.path.join(
+            self.config.data_ingestion.unzip_dir, "kidney-ct-scan-image")
+
+        create_directories([config.root_dir])
+
+        model_training_config = ModelTrainingConfig(
+            root_dir=config.root_dir,
+            model_trained_path=config.model_trained_path,
+            updated_base_model_path=base_model.updated_base_model_path,
+            training_data=training_data,
+            params_epochs=params.EPOCHS,
+            params_batch_size=params.BATCH_SIZE,
+            params_is_augmentation=params.AUGMENTATION,
+            params_image_size=params.IMAGE_SIZE
+        )
+        return model_training_config

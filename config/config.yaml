@@ -10,3 +10,12 @@ base_model:
   root_dir: artifacts/base_model
   base_model_path: artifacts/base_model/base_model.h5
   updated_base_model_path: artifacts/base_model/base_model_updated.h5
+
+call_backs:
+  root_dir: artifacts/call_backs
+  tensorboard_root_log_dir: artifacts/call_backs/tensorboard_log_dir
+  checkpoint_model_filepath: artifacts/call_backs/checkpoint_dir/model.h5
+
+model_training:
+  root_dir: artifacts/model_training
+  model_trained_path: artifacts/model_training/model.h5
