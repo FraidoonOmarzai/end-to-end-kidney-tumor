@@ -39,5 +39,16 @@ pip install -r requirements.txt
 * entity --> configuration manager --> componenets --> pipeline --> run `dvc repro`
 
 5. **Model Training Section** 
-* define config/config.yaml and params.yaml --> add 02_base_model.ipynb **(prepare call backs and train the model)**
+* define config/config.yaml and params.yaml --> add 03_model_training.ipynb **(prepare call backs and train the model)**
 * entity --> configuration manager --> componenets --> pipeline --> run `dvc repro`
+
+6. **Model Evaluation**
+
+* define config/config.yaml and params.yaml --> add 04_model_evaluation.ipynb
+* entity --> configuration manager --> componenets --> pipeline --> run `dvc repro`
+* **using mlflow** and **dagshub**
+```bash
+export MLFLOW_TRACKING_URI=https://dagshub.com/fraidoon_omarzai/end-to-end-kidney-tumor.mlflow \
+export MLFLOW_TRACKING_USERNAME=fraidoon_omarzai \
+export MLFLOW_TRACKING_PASSWORD=bc25b16bd5206328d8899cf34377f26ad71d1420 \
+```

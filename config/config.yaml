@@ -19,3 +19,8 @@ call_backs:
 model_training:
   root_dir: artifacts/model_training
   model_trained_path: artifacts/model_training/model.h5
+
+model_evaluation:
+  path_of_model: artifacts/model_training/model.h5
+  training_data: artifacts/data_ingestion/kidney-ct-scan-image
+  mlflow_uri: https://dagshub.com/fraidoon_omarzai/end-to-end-kidney-tumor.mlflow

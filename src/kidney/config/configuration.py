@@ -4,7 +4,8 @@ import os
 from kidney.entity.entity import (DataIngestionConfig,
                                   BaseModelConfig,
                                   CallBackConfig,
-                                  ModelTrainingConfig)
+                                  ModelTrainingConfig,
+                                  ModelEvaluationConfig)
 
 
 class ConfigurationManager:
@@ -78,3 +79,16 @@ class ConfigurationManager:
             params_image_size=params.IMAGE_SIZE
         )
         return model_training_config
+
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+        config = self.config.model_evaluation
+
+        model_evaluation_config = ModelEvaluationConfig(
+            path_of_model=config.path_of_model,
+            training_data=config.training_data,
+            mlflow_uri=config.mlflow_uri,
+            all_params=self.params,
+            params_image_size=self.params.IMAGE_SIZE,
+            params_batch_size=self.params.BATCH_SIZE
+        )
+        return model_evaluation_config
